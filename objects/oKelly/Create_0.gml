@@ -9,6 +9,8 @@ patience = 1200;
 minPatience = 600;
 waitCounter = 0;
 
+humanCounter = 0;
+
 
 kellyEmitter = audio_emitter_create();
 kellyLowShift = 0.1;

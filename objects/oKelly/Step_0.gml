@@ -7,6 +7,7 @@ if(oNest.image_index < 6)
 {
 	waitCounter = 0;	
 }
+humanCounter++;
 
 
 if(isFalling)
@@ -44,8 +45,7 @@ else if(lastNest > oNest.image_index) //the nest has been damaged
 {
 	lastNest = oNest.image_index;
 	patience = max(minPatience,patience - 120);
-	speak(DuckAlarm);
-	bubble(sBubbleHuman);	
+	
 	
 }
 else

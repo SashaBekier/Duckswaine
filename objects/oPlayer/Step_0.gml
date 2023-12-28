@@ -90,14 +90,14 @@ if(move == 0){
 }
 
 if(place_meeting(x+hsp,y,oGround)){
-	while(place_meeting(x+sign(hsp),y,oGround)){
-		hsp -= sign(hsp);	
+	while(!place_meeting(x+sign(hsp),y,oGround)){
+		x += sign(hsp);	
 	}
 	y--;
 }
 
 
-if(abs(hsp) > 10) hsp = sign(hsp)*10;
+if(abs(hsp)>10)hsp = sign(hsp) * 10;
 x += hsp;
 if(hsp != 0){
 	lastDirection = sign(hsp);	
@@ -400,4 +400,4 @@ if(doWak)
 	}
 }
 
-
+audio_listener_position(x,y,0);
