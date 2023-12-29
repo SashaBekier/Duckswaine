@@ -3,7 +3,7 @@
 
 
 
-if (activeHunters < maxHunters) && hunterSpawned > hunterLatency{
+if (activeHunters < max(maxHunters,oNest.image_index)) && (hunterSpawned > hunterLatency){
 	var side = irandom_range(0,1);
 	var xtarg = -100;
 	if(side == 1){
@@ -18,3 +18,4 @@ hunterSpawned++
 
 audio_listener_position(oPlayer.x,oPlayer.y,0);
 audio_listener_orientation(0, 0, 1, 0, -1, 0);
+

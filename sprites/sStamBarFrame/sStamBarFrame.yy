@@ -26,7 +26,7 @@
   "origin": 0,
   "parent": {
     "name": "StamBar",
-    "path": "folders/Sprites/StamBar.yy",
+    "path": "folders/Sprites/Player/StamBar.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

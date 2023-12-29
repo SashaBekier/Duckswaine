@@ -61,13 +61,14 @@ if(sign(lastHsp) > 0){
 
 function pecked()
 {
-	currentSpeed = max(1,currentSpeed+0.2);	
-	hsp *= -1;
+	currentSpeed = max(1,currentSpeed-0.1);	
+	dodge();
+	
 }
 
 function diveBombed()
 {
-	currentSpeed = max(0.5,currentSpeed-0.2);	
+	currentSpeed = max(0.5,currentSpeed+0.2);	
 	if(!isDodging)
 	{
 		hsp *= -1;

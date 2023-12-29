@@ -21,6 +21,13 @@ audio_falloff_set_model(audio_falloff_linear_distance);
 function playSoundAt(emitter,xCoord,yCoord,sound,lowShift,highShift)
 {
 	var targDist = point_distance(xCoord,yCoord,oPlayer.x,oPlayer.y);
-	audio_play_sound_on(emitter,sound,0,1,1-(targDist/2500),0,random_range(lowShift,highShift)+1);
+	audio_play_sound_on(emitter,sound,0,1,1-(targDist/2500),targDist/1000,random_range(lowShift,highShift)+1);
 }
+backTrees = pointer_null;  
+if(layer_exists("BackgroundTrees"))
+{
+	backTrees = layer_get_id("BackgroundTrees");
+}
+
+camera = view_camera[0];
 
