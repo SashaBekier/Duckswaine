@@ -57,6 +57,11 @@ function makeGrass(count, leftX, rightX)
 		}
 		count--;
 	}
+	with(instance_create_layer(1850,600,"LoSTrees",oBlockLoS))
+		{
+			sprite_index = sShrub01;
+		}
+	
 }
 
 

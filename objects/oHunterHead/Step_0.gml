@@ -14,26 +14,32 @@ else
 }
 sinceBombed++;
 
-var targDist = point_distance(x,y,oPlayer.x,oPlayer.y);
-var targDir = point_direction(x,y,oPlayer.x,oPlayer.y);
-var targLR = sign(lengthdir_x(targDist,targDir)); //-1 Left, +1 Right
-var targUD = sign(lengthdir_y(targDist,targDir)); //-1 Up, +1 Down
+lookAt = pointer_null;
 
-if(targDist < vision && (moveDir - targLR) < 0.1 && (moveDir - targLR) > -0.1){
+if(canSeeThis(oPlayer,moveDir))
+{
+	if(point_distance(x,y,oPlayer.x,oPlayer.y) < 150 && oPlayer.sprite_index == sPlayerDive)
+	{
+		myBody.dodge();	
+	}
+	lookAt = oPlayer;
+}
+if(lookAt == pointer_null && canSeeThis(oKelly,moveDir)) lookAt = oKelly;
+
+if(lookAt != pointer_null)
+{
+	var targDir = point_direction(x,y,lookAt.x,lookAt.y);
+	var targLR = sign(lengthdir_x(1,targDir)); //-1 Left, +1 Right
+	
 	if(targLR < 0.1) targDir += 180;
-	
-	
 	image_angle += angle_difference(targDir, image_angle) * sharpLook;
 	
 	//clamps the image Angle
 	if( image_angle > 75 && image_angle < 95) image_angle = 75;
 	if( image_angle < 285 && image_angle > 265) image_angle = 285;
-	
-	if(targDist < 150 && oPlayer.sprite_index == sPlayerDive)
-	{
-		myBody.dodge();	
-	}
-} else {
+} 
+else
+{
 	image_angle += angle_difference(0, image_angle) * casualLook;
 }
 
