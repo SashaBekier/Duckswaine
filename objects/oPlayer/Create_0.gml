@@ -25,7 +25,7 @@ isIdle = true;
 isDiving = false;
 isGlide = false;
 
-maxStamina = 20;
+maxStamina = 30;
 stamina = maxStamina;
 idleRegain = 3;
 walkRegain = 2;

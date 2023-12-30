@@ -46,7 +46,7 @@ if(place_meeting(x,y+vsp-13,oGround)){
 	}
 	vsp = 0;
 } else {
-	y++;	
+	//y++;	
 }
 
 y += vsp;
