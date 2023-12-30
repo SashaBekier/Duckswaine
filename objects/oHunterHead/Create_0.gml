@@ -33,7 +33,7 @@ function bubble(sprite){
 
 function canSeeThis(inst, moveDir)
 {
-	if(abs(x-inst.x)< 5) return false;
+	if(abs(x-inst.x)< 50) return false;
 	if (variable_instance_exists(inst,"isHidden"))
 	{
 		if(inst.isHidden) return false;

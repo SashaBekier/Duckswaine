@@ -1,15 +1,16 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oConcealment",
+  "name": "staticGravity",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Env",
-    "path": "folders/Objects/Env.yy",
+    "name": "Interfaces",
+    "path": "folders/Objects/Interfaces.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -27,10 +28,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "sS01",
-    "path": "sprites/sS01/sS01.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

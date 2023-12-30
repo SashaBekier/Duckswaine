@@ -87,7 +87,7 @@ function distributeObjects(pool,obj,onLayer,minGap, maxGap,clumping, startAt, en
 			if(random(1) > .5) image_xscale *= -1;
 			spriteW = abs(sprite_width*image_xscale);
 		}
-		if(random_range(0,1) > clumping)
+		if(random(1) > clumping)
 		{
 			doAt += minGap + irandom_range(0,maxGap-minGap);
 		} 

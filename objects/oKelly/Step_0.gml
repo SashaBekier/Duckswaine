@@ -11,28 +11,6 @@ humanCounter++;
 
 isHidden = place_meeting(x,y,oConcealment);
 
-
-if(isFalling)
-{
-	vsp += RoomControl.grv;
-	
-	if(place_meeting(x,y+vsp,oGround))
-	{
-		if(vsp >0)
-		{
-			while(!place_meeting(x,y+sign(vsp),oGround))
-			{
-				y += sign(vsp);	
-			}
-			vsp = 0;
-			isFalling = false;
-			audio_emitter_position(kellyEmitter,x,y,0);
-		}
-	}
-	y += vsp;
-}
-
-
  
 if (lastNest < oNest.image_index) // Duckswaine delivers
 {
