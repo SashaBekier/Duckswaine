@@ -2,10 +2,10 @@
 var goRight = keyboard_check(vk_right)||keyboard_check(ord("D"));
 var goLeft = keyboard_check(vk_left) || keyboard_check(ord("A"));
 var goDive =  keyboard_check(vk_down) || keyboard_check(ord("S"));
-var doGlide = (onGround > takeOffFlaps && keyboard_check(vk_space));
+var doGlide = (onGround > takeOffFlaps && keyboard_check(vk_shift));
 var doPeck = (onGround == 0 && carrying == pointer_null && keyboard_check(vk_space));
 var tryFlap = keyboard_check(vk_up) || keyboard_check(ord("W"));
-var doPoo = (sincePoo >= pooLatency && keyboard_check(vk_shift));
+var doPoo = (sincePoo >= pooLatency && onGround > 0 && keyboard_check(vk_space));
 var doWak = (keyboard_check_pressed(vk_control));
 
 
@@ -167,6 +167,7 @@ if(y + vsp < 32){
 
 
 
+isHidden = place_meeting(x,y,oConcealment);
 
 
 

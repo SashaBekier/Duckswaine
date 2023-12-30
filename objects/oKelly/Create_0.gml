@@ -3,7 +3,7 @@
 vsp = 0;
 isFalling = true;
 
-
+isHidden = false;
 lastNest = 0;
 patience = 1200; 
 minPatience = 600;

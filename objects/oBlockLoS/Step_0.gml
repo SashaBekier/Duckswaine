@@ -3,8 +3,8 @@
 
 
 if(isFalling){
-	y += 1;
-	if(place_meeting(x,y-10,oGround))
+	y += 10;
+	if(place_meeting(x,y-15,oGround))
 	{
 		isFalling = false;
 	

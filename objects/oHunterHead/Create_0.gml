@@ -33,7 +33,11 @@ function bubble(sprite){
 
 function canSeeThis(inst, moveDir)
 {
-	if(abs(x-inst.x)< 10) return false;
+	if(abs(x-inst.x)< 5) return false;
+	if (variable_instance_exists(inst,"isHidden"))
+	{
+		if(inst.isHidden) return false;
+	}
 	
 	var targDist = point_distance(x,y,inst.x,inst.y);
 	var targDir = point_direction(x,y,inst.x,inst.y);

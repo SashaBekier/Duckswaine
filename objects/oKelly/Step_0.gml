@@ -9,6 +9,8 @@ if(oNest.image_index < 6)
 }
 humanCounter++;
 
+isHidden = place_meeting(x,y,oConcealment);
+
 
 if(isFalling)
 {

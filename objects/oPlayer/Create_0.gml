@@ -51,3 +51,5 @@ guiStamBarFillXOffset = 6;
 guiStamPx = guiStamBarWidth + 3;
 
 guiStamBarInstance = pointer_null;
+
+isHidden = false;
