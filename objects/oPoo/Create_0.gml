@@ -5,5 +5,5 @@ vsp = oPlayer.vsp + 6;
 
 isFlying = true;
 
-
+launchHeight = oPlayer.y;
 

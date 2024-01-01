@@ -4,6 +4,7 @@
 myBody = pointer_null;
 
 vsp = 0;
+hsp = 0;
 
 baseOffset = 0;
 

@@ -1,9 +1,16 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+var nestCheck = 2;
+if(RoomControl.isNestSet)
+{
+	nestCheck = oNest.image_index;
+	sinceNestSet++;
+}
 
+frameCount++;
 
-if (activeHunters < max(maxHunters,oNest.image_index)) && (hunterSpawned > hunterLatency){
+if (activeHunters < max(maxHunters,nestCheck)) && (hunterSpawned > hunterLatency){
 	var side = irandom_range(0,1);
 	var xtarg = -100;
 	if(side == 1){

@@ -10,6 +10,13 @@ if(other.isFlying){
 	instance_destroy(other);
 	speak(HunterDisgust);
 	bubble(sBubblePoo);
+	
+	oPlayer.headShots++;
+	oPlayer.hitStreak++;
+	
+	var pooFall = other.launchHeight - y;
+	if(pooFall > 400) oPlayer.longDrops++;
+	if(pooFall > oPlayer.longestDrop) oPlayer.longestDrop = pooFall;
 }
 
 

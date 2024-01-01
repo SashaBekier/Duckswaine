@@ -7,7 +7,7 @@ var doPeck = (onGround == 0 && carrying == pointer_null && keyboard_check(vk_spa
 var tryFlap = keyboard_check(vk_up) || keyboard_check(ord("W"));
 var doPoo = (sincePoo >= pooLatency && onGround > 0 && keyboard_check(vk_space));
 var doWak = (keyboard_check_pressed(vk_control));
-
+var setNest = (keyboard_check(ord("N")) && !RoomControl.isNestSet && onGround == 0);
 
 //combines horizontal inputs
 var move = goRight - goLeft;
@@ -29,19 +29,28 @@ if (x + hsp <= 32) {
 
 if(doPoo){
 	sincePoo = 0;
+	poosDone++;
 	instance_create_layer(x-(8*sign(hsp)),y,"Poo",oPoo);
 } else {
 	sincePoo++;
 }
 
 if(goDive){
-	isDiving = true;
+	if(!isDiving)
+	{
+		bombY = y;
+		isDiving = true;
+	}
 	vsp += flightSpeed/3;
 	if(terminalVelocity < diveTV){
 		terminalVelocity += (diveTV-terminalVelocity)/20	;
 	}
 } else {
-	isDiving = false;
+	if(isDiving)
+	{
+		isDiving = false;
+		bombY=2000;
+	}
 	if(doGlide){
 		
 		if(terminalVelocity > wingsTV){
@@ -168,6 +177,12 @@ if(y + vsp < 32){
 
 
 isHidden = place_meeting(x,y,oConcealment);
+
+if(setNest)
+{
+	instance_create_layer(x-30,y,"Nest",oNest);
+	RoomControl.isNestSet = true;
+}
 
 
 
@@ -388,10 +403,10 @@ if(doWak)
 {
 	if(carrying != pointer_null)
 	{
-		carrying.isFalling = true;
+		carrying.myGrav.isFalling = true;
 		carrying.isCarried = false;
-		carrying.hsp = hsp;
-		carrying.vsp = vsp;
+		carrying.myGrav.hsp = hsp;
+		carrying.myGrav.vsp = vsp;
 		carrying = pointer_null;
 	} 
 	else

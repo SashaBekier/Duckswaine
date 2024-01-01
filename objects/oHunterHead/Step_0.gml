@@ -24,7 +24,7 @@ if(canSeeThis(oPlayer,moveDir))
 	}
 	lookAt = oPlayer;
 }
-if(lookAt == pointer_null && canSeeThis(oKelly,moveDir)) lookAt = oKelly;
+if(lookAt == pointer_null && instance_exists(oKelly) && canSeeThis(oKelly,moveDir)) lookAt = oKelly;
 
 if(lookAt != pointer_null)
 {

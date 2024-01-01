@@ -53,3 +53,19 @@ guiStamPx = guiStamBarWidth + 3;
 guiStamBarInstance = pointer_null;
 
 isHidden = false;
+
+
+poosDone = 0;
+headShots = 0;
+longestDrop = 0;
+longDrops = 0;
+hitStreak = 0;
+bestStreak = 0;
+
+hunterPecks = 0;
+
+bombCount = 0;
+longBombs = 0;
+longestBomb = 0;
+
+bombY = 1000;

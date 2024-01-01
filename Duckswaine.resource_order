@@ -7,6 +7,7 @@
     {"name":"Objects","order":9,"path":"folders/Objects.yy",},
     {"name":"Env","order":9,"path":"folders/Objects/Env.yy",},
     {"name":"Hunter","order":2,"path":"folders/Objects/Hunter.yy",},
+    {"name":"Interfaces","order":10,"path":"folders/Objects/Interfaces.yy",},
     {"name":"Player","order":3,"path":"folders/Objects/Player.yy",},
     {"name":"Particle Systems","order":15,"path":"folders/Particle Systems.yy",},
     {"name":"Paths","order":4,"path":"folders/Paths.yy",},
@@ -29,7 +30,6 @@
     {"name":"StamBar","order":11,"path":"folders/Sprites/Player/StamBar.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"Interfaces","order":10,"path":"folders/Objects/Interfaces.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"frog10","order":17,"path":"sounds/frog10/frog10.yy",},

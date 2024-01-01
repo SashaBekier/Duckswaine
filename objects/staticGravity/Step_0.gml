@@ -1,7 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(isFalling && myBody != pointer_null){
+if(isFalling && myBody != pointer_null)
+{
 	with(myBody)
 	{
 		other.vsp += RoomControl.grv * other.gravMultiplier;
@@ -10,7 +11,8 @@ if(isFalling && myBody != pointer_null){
 		{
 			if(other.vsp >0)
 			{
-				while(!place_meeting(x,y+sign(other.vsp)+other.baseOffset,oGround)){
+				while(!place_meeting(x,y+sign(other.vsp)+other.baseOffset,oGround))
+				{
 					y += sign(other.vsp);	
 				}
 				other.vsp = 0;
@@ -21,10 +23,22 @@ if(isFalling && myBody != pointer_null){
 		{
 			y += other.vsp;
 		}
+		if(place_meeting(x+other.hsp,y,oGround))
+		{
+			while(!place_meeting(x+sign(other.hsp),y,oGround))
+			{
+				x += sign(other.hsp);	
+			}
+		}
+		else 
+		{
+			x += other.hsp;	
+		}
 	}
 }
 
 
+	
 
 
 

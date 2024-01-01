@@ -1,11 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
+level = 1;
+isNestSet = false;
+sinceNestSet = 0;
 
+frameCount = 0;
 
 activeHunters = 0;
 grv = 0.1;
 maxHunters = 2;
-hunterLatency = 360;
+hunterLatency = 720;
 hunterSpawned = 360;
 
 

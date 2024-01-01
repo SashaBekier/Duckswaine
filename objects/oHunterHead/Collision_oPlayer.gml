@@ -16,6 +16,13 @@ if(sinceBombed > bombedLatency && other.sprite_index == sPlayerDive)
 	sinceBombed = 0;
 	speak(HunterPain);
 	bubble(sBubbleWounded);
+	oPlayer.bombCount++;
+	var bombDrop = oPlayer.bombY - y;
+	if(bombDrop > 300) 
+	{
+		oPlayer.longBombs++;
+		if(bombDrop>oPlayer.longestBomb) oPlayer.longestBomb = bombDrop;
+	}
 }
 
 

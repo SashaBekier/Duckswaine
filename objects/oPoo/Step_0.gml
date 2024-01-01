@@ -13,6 +13,8 @@ if(place_meeting(x,y+vsp,oGround)){
 	sprite_index = sPooGround;
 	isFlying = false;
 	hsp = 0;
+	if(oPlayer.hitStreak > oPlayer.bestStreak) oPlayer.bestStreak = oPlayer.hitStreak;
+	oPlayer.hitStreak = 0;
 }
 
 y += vsp;

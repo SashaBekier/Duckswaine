@@ -63,7 +63,7 @@ function pecked()
 {
 	currentSpeed = max(1,currentSpeed-0.1);	
 	dodge();
-	
+	oPlayer.hunterPecks++;
 }
 
 function diveBombed()
