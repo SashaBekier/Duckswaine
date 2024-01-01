@@ -1,135 +1,116 @@
-//catch player inputs
-var goRight = keyboard_check(vk_right)||keyboard_check(ord("D"));
-var goLeft = keyboard_check(vk_left) || keyboard_check(ord("A"));
-var goDive =  keyboard_check(vk_down) || keyboard_check(ord("S"));
-var doGlide = (onGround > takeOffFlaps && keyboard_check(vk_shift));
-var doPeck = (onGround == 0 && carrying == pointer_null && keyboard_check(vk_space));
-var tryFlap = keyboard_check(vk_up) || keyboard_check(ord("W"));
-var doPoo = (sincePoo >= pooLatency && onGround > 0 && keyboard_check(vk_space));
-var doWak = (keyboard_check_pressed(vk_control));
-var setNest = (keyboard_check(ord("N")) && !RoomControl.isNestSet && onGround == 0);
+if(myInputs.doPeck)pecking = true;
+if(pecking) myInputs.move = 0;
 
-//combines horizontal inputs
-var move = goRight - goLeft;
-
-if(doPeck)pecking = true;
-if(pecking) move = 0;
-
-if (x + hsp >= 3968) {
-	move = 0;
+if (x + hsp >= 3968) 
+{
+	myInputs.move = 0;
 	hsp = 0.01;
 	x = 3967;
 } 
-if (x + hsp <= 32) {
-	move = 0;
+else if (x + hsp <= 32) 
+{
+	myInputs.move = 0;
 	hsp = -0.01;
 	x = 33;
 } 
 
 
-if(doPoo){
+if(myInputs.doPoo)
+{
 	sincePoo = 0;
 	poosDone++;
 	instance_create_layer(x-(8*sign(hsp)),y,"Poo",oPoo);
-} else {
+} 
+else 
+{
 	sincePoo++;
 }
 
-if(goDive){
+if(myInputs.goDive)
+{
 	if(!isDiving)
 	{
 		bombY = y;
 		isDiving = true;
 	}
 	vsp += flightSpeed/3;
-	if(terminalVelocity < diveTV){
-		terminalVelocity += (diveTV-terminalVelocity)/20	;
-	}
-} else {
+	if(terminalVelocity < diveTV) terminalVelocity += (diveTV-terminalVelocity)/20;
+}
+else 
+{
 	if(isDiving)
 	{
 		isDiving = false;
 		bombY=2000;
 	}
-	if(doGlide){
-		
-		if(terminalVelocity > wingsTV){
-			terminalVelocity -= wingsTV/10;
-		}
-		if(canFlap && !isGlide){
+	if(myInputs.doDesc)
+	{
+		isGlide = false;
+		if(terminalVelocity < noWingsTV) terminalVelocity += noWingsTV/10;
+	} 
+	else 
+	{
+		if(terminalVelocity > wingsTV) terminalVelocity -= wingsTV/10;
+		if(canFlap && !isGlide)
+		{
 			isGlide = true;
-			if(terminalVelocity > wingsTV){
+			if(terminalVelocity > wingsTV)
+			{
 				terminalVelocity -= wingsTV/2;
 				vsp = min(vsp,terminalVelocity);
 			}
 		}
-	} else {
-		isGlide = false;
-		if(terminalVelocity < noWingsTV){
-			terminalVelocity += noWingsTV/10	;
-		}	
 	}
 }
 
-
-if(onGround < takeOffFlaps){
-	hsp += move * walkSpeed / 10;
-	if(abs(hsp) > walkSpeed){
-		hsp = walkSpeed * sign(hsp);
-	}
-} else {
-	
-	if(abs(hsp)>flightSpeed){
-		hsp = flightSpeed * sign(hsp);
-	} else {
+if(onGround < takeOffFlaps)
+{
+	hsp += myInputs.move * walkSpeed / 10;
+	if(abs(hsp) > walkSpeed) hsp = walkSpeed * sign(hsp);
+}
+else 
+{
+	if(abs(hsp)>flightSpeed) hsp = flightSpeed * sign(hsp);
+	else 
+	{
 		var acc = accLatency;
-		if(sign(hsp)!=sign(move)){
-			acc = 20;
-		}
-		hsp += move * flightSpeed / acc;
+		if(sign(hsp)!=sign( myInputs.move)) acc = 20;
+		hsp +=  myInputs.move * flightSpeed / acc;
 	}
 }
 
-if(move == 0){
-	if(onGround == 0){
-		hsp = hsp * 9 / 10;
-	} else {
-		hsp = hsp *199/200;
-	}
+if( myInputs.move == 0)
+{
+	if(onGround == 0) hsp = hsp * 9 / 10;
+	else hsp = hsp *199/200;
 }
 
-if(place_meeting(x+hsp,y,oGround)){
-	while(!place_meeting(x+sign(hsp),y,oGround)){
-		x += sign(hsp);	
-	}
+if(place_meeting(x+hsp,y,oGround))
+{
+	while(!place_meeting(x+sign(hsp),y,oGround)) x += sign(hsp);
 	y--;
 }
 
-
-if(abs(hsp)>10)hsp = sign(hsp) * 10;
 x += hsp;
-if(hsp != 0){
-	lastDirection = sign(hsp);	
-}
-
-
-
+if(hsp != 0) lastDirection = sign(hsp);	
 
 vsp += RoomControl.grv;
 
 sinceFlap += 1;
 var flapCost = baseFlapCost;
 if(onGround < takeOffFlaps) flapCost *= 2;
-if(sinceFlap > flapLatency && stamina >= flapCost){
-	canFlap = true;
-}
+if(sinceFlap > flapLatency && stamina >= flapCost) canFlap = true;
 
-if(tryFlap && canFlap){
+
+if(myInputs.tryFlap && canFlap)
+{
 	//taking off is hard
-	if(onGround < takeOffFlaps){
+	if(onGround < takeOffFlaps)
+	{
 		vsp -= (flap / 2);
 		stamina -= flapCost;
-	} else {
+	} else 
+	{
 		vsp -= flap;
 		stamina -= flapCost;
 	}
@@ -145,32 +126,29 @@ if(tryFlap && canFlap){
 }
 
 
-if(vsp < maxLift){
-	vsp = maxLift;
-}
+vsp = max(maxLift,vsp);
 
 
 
-
-if(place_meeting(x,y+vsp,oGround)){
-	if(vsp >0){
-		while(!place_meeting(x,y+sign(vsp),oGround)){
-			y += sign(vsp);	
-		}
+if(place_meeting(x,y+vsp,oGround))
+{
+	if(vsp >0)
+	{
+		while(!place_meeting(x,y+sign(vsp),oGround)) y += sign(vsp);	
 		vsp = 0;
 		onGround = 0;
 	}
 }
-
-if(vsp > terminalVelocity){
-	vsp = terminalVelocity;
-}
+vsp = min(terminalVelocity,vsp);
 
 //keeps duck fully on the screen when at flight ceiling
-if(y + vsp < 32){
+if(y + vsp < 32)
+{
 	y = 32;
 	vsp = 0;
-} else {
+} 
+else 
+{
 	y += vsp;
 }
 
@@ -178,7 +156,7 @@ if(y + vsp < 32){
 
 isHidden = place_meeting(x,y,oConcealment);
 
-if(setNest)
+if(myInputs.setNest)
 {
 	instance_create_layer(x-30,y,"Nest",oNest);
 	RoomControl.isNestSet = true;
@@ -187,7 +165,7 @@ if(setNest)
 
 
 
-if(abs(hsp) < 0.2 && move == 0){
+if(abs(hsp) < 0.2 &&  myInputs.move == 0){
 	isIdle = true;
 } else {
 	isIdle = false;
@@ -236,31 +214,28 @@ if(stamina>maxStamina) stamina = maxStamina;
 sincePeck++;
 if(pecking)
 {
-	if(image_index > 1.999 && image_index < 3 && sincePeck >= peckLatency) // the peck frame
+	if(image_index > 1.999 && image_index < 3 && sincePeck >= peckLatency && carrying == pointer_null) // the peck frame
 	{
-		if(place_meeting(x+(37*sign(lastDirection)),y+29,oPeckable)){
-			if(carrying == pointer_null)
-			{
-				instance_place(x+(37*sign(lastDirection)), y+29,oPeckable).pecked();
-				sincePeck =0;
-			}
+		var peckX = x+(37*sign(lastDirection));
+		var peckY = y+29;
+		if(place_meeting(peckX,peckY,oPeckable))
+		{
+			instance_place(peckX,peckY,oPeckable).pecked();
+			sincePeck =0;
 		}
-		if(place_meeting(x+(37*sign(lastDirection)),y+29,oCarryable)){
-			if(carrying == pointer_null)
-			{
-				carrying = instance_place(x+(37*sign(lastDirection)), y+29,oCarryable);
-				carrying.isFalling = false;
-				carrying.isCarried = true;
-			}
+		if(place_meeting(peckX,peckY,oCarryable))
+		{
+			carrying = instance_place(peckX,peckY,oCarryable);
+			carrying.isFalling = false;
+			carrying.isCarried = true;
 		}
-		if(place_meeting(x+(37*sign(lastDirection)),y+29,oHunter) ){
-			if(carrying == pointer_null)
+		if(place_meeting(peckX,peckY,oHunter) )
+		{
+			var targ = instance_place(peckX,peckY,oHunter);
+			if(sign(lastDirection) == sign(targ.hsp))
 			{
-				var targ = instance_place(x+(37*sign(lastDirection)), y+29,oHunter);
-				if(sign(lastDirection) == sign(targ.hsp)){
-					targ.pecked();
-					sincePeck = 0;
-				}
+				targ.pecked();
+				sincePeck = 0;
 			}
 		}
 	}
@@ -399,7 +374,7 @@ if(carrying != pointer_null)
 }
 
 
-if(doWak)
+if(myInputs.doWak)
 {
 	if(carrying != pointer_null)
 	{

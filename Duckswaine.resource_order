@@ -104,6 +104,7 @@
     {"name":"sTree10","order":9,"path":"sprites/sTree10/sTree10.yy",},
     {"name":"sBubbleHuman","order":2,"path":"sprites/sBubbleHuman/sBubbleHuman.yy",},
     {"name":"sTree03","order":2,"path":"sprites/sTree03/sTree03.yy",},
+    {"name":"inputController","order":1,"path":"objects/inputController/inputController.yy",},
     {"name":"sStamBarFillBody","order":3,"path":"sprites/sStamBarFillBody/sStamBarFillBody.yy",},
     {"name":"sTree02","order":1,"path":"sprites/sTree02/sTree02.yy",},
     {"name":"oPeckable","order":2,"path":"objects/oPeckable/oPeckable.yy",},

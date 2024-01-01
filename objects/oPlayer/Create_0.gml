@@ -1,3 +1,6 @@
+myInputs = instance_create_layer(0,0,"GameComponents",inputController);
+myInputs.myBody = self;
+
 hsp = 0;
 vsp = 0;
 

@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(sinceBombed > bombedLatency && other.sprite_index == sPlayerDive)
+if(sinceBombed > bombedLatency && other.sprite_index == sPlayerDive && y - oPlayer.bombY > 150)
 {
 	myBody.currentSpeed = max(1,myBody.currentSpeed+0.2);	
 	if(x > 2000) //turns hunter towards nearest escape route
@@ -17,8 +17,8 @@ if(sinceBombed > bombedLatency && other.sprite_index == sPlayerDive)
 	speak(HunterPain);
 	bubble(sBubbleWounded);
 	oPlayer.bombCount++;
-	var bombDrop = oPlayer.bombY - y;
-	if(bombDrop > 300) 
+	var bombDrop = y - oPlayer.bombY;
+	if(bombDrop > 400) 
 	{
 		oPlayer.longBombs++;
 		if(bombDrop>oPlayer.longestBomb) oPlayer.longestBomb = bombDrop;

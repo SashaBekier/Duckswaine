@@ -130,6 +130,7 @@
     {"id":{"name":"sBubbleHuman","path":"sprites/sBubbleHuman/sBubbleHuman.yy",},},
     {"id":{"name":"sStamBarFrame","path":"sprites/sStamBarFrame/sStamBarFrame.yy",},},
     {"id":{"name":"sTree03","path":"sprites/sTree03/sTree03.yy",},},
+    {"id":{"name":"inputController","path":"objects/inputController/inputController.yy",},},
     {"id":{"name":"sStamBarFillBody","path":"sprites/sStamBarFillBody/sStamBarFillBody.yy",},},
     {"id":{"name":"sTree02","path":"sprites/sTree02/sTree02.yy",},},
     {"id":{"name":"oPeckable","path":"objects/oPeckable/oPeckable.yy",},},
