@@ -12,3 +12,6 @@ image_index = 0;
 
 kickLatency = 240;
 sinceKicked = kickLatency;
+
+
+kellySpawned = false;

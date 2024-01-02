@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(isFalling && myBody != pointer_null)
+if((isFalling || activeMotion) && myBody != pointer_null)
 {
 	with(myBody)
 	{
@@ -15,21 +15,21 @@ if(isFalling && myBody != pointer_null)
 				{
 					y += sign(other.vsp);	
 				}
-				other.vsp = 0;
-				other.isFalling = false;
+				other.vsp *= -1 * other.bounce * oGround.bounceY;
+				if(abs(other.vsp) < 0.2) other.isFalling = false;
 			}
 		} 
 		else
 		{
 			y += other.vsp;
 		}
-		if(place_meeting(x+other.hsp,y,oGround))
+		if(place_meeting(x+other.hsp,y-other.maxUpStep+other.baseOffset,oGround)) other.hsp = 0;
+		else if(place_meeting(x+other.hsp,y,oGround))
 		{
-			while(!place_meeting(x+sign(other.hsp),y,oGround))
-			{
-				x += sign(other.hsp);	
-			}
-		}
+			while(!place_meeting(x+sign(other.hsp),y,oGround)) x += sign(other.hsp);
+			y--;
+			other.hsp *= oGround.resistX;
+		} 
 		else 
 		{
 			x += other.hsp;	

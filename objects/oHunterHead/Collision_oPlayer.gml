@@ -4,9 +4,10 @@
 if(sinceBombed > bombedLatency && other.sprite_index == sPlayerDive && y - oPlayer.bombY > 150)
 {
 	myBody.currentSpeed = max(1,myBody.currentSpeed+0.2);	
-	if(x > 2000) //turns hunter towards nearest escape route
+	if(x > RoomControl.roomWidth / 2) //turns hunter towards nearest escape route
 	{
-		myBody.hsp = abs(myBody.hsp);		
+		myBody.hsp = abs(myBody.hsp);
+		
 	} 
 	else 
 	{

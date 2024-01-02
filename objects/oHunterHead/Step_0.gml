@@ -51,7 +51,7 @@ if(moveDir > 0){
 	image_xscale = -1;
 }
 
-if(x > 4180) || (x < -180){
+if(x > RoomControl.roomWidth + 180) || (x < -180){
 	instance_destroy();	
 }
 

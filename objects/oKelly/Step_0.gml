@@ -25,7 +25,7 @@ else if(lastNest > oNest.image_index) //the nest has been damaged
 {
 	lastNest = oNest.image_index;
 	patience = max(minPatience,patience - 120);
-	
+	if(!hunterComplain && humanCounter > humanLatency) hunterComplain = true;
 	
 }
 else
@@ -40,3 +40,10 @@ else
 }
 
 
+if(hunterComplain)
+{
+	speak(DuckAlarm);
+	bubble(sBubbleHuman);
+	humanCounter = 0;
+	hunterComplain = false;
+}

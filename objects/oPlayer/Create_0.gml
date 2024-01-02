@@ -1,8 +1,10 @@
 myInputs = instance_create_layer(0,0,"GameComponents",inputController);
 myInputs.myBody = self;
 
-hsp = 0;
-vsp = 0;
+maxUpStep = 10;
+
+hsp = 0.0;
+vsp = 0.0;
 
 walkSpeed = 1.5;
 flightSpeed =8;
@@ -14,19 +16,22 @@ pooLatency = 40;
 
 flapLatency = 20;
 canFlap = true;
-onGround = 1;
+onGround = false;
+flapsSinceTakeOff = 1;
 takeOffFlaps = 3;
+
+isLanding = false;
 
 wingsTV = .5;
 noWingsTV = 3;
-diveTV = noWingsTV * 3;
+diveTerminalVelocity = noWingsTV * 3;
 
-terminalVelocity  = noWingsTV;
 sinceFlap = flapLatency;
 sincePoo = pooLatency;
 isIdle = true;
 isDiving = false;
 isGlide = false;
+minGlideHsp = 3;
 
 maxStamina = 30;
 stamina = maxStamina;

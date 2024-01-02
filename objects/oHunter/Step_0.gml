@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 
-if(x > 4200) || (x < -200){
+if(x > RoomControl.roomWidth + 200) || (x < -200){
 	instance_destroy();	
 	RoomControl.activeHunters--;
 }
@@ -21,9 +21,12 @@ if(isHunting){
 	}
 } else {
 	image_speed = 3;
-	if (x > 2000) {
+	if (x > RoomControl.roomWidth/2) 
+	{
 		hsp = 2 * maxSpeed;
-	} else if (x <= 2000) {
+	} 
+	else 
+	{
 		hsp = -2 * maxSpeed;
 	}
 }

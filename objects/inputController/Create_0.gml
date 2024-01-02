@@ -5,12 +5,10 @@
 goRight = false;
 goLeft = false;
 goDive = false;
-doDesc = false;
-doPeck = false;
+doAlt = false;
 tryFlap = false;
-doPoo = false;
-doWak = false;
-setNest = false;
+doAttack = false;
+doPassive = false;
 move = 0;
 
 

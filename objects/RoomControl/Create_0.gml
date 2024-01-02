@@ -9,12 +9,13 @@ frameCount = 0;
 activeHunters = 0;
 grv = 0.1;
 maxHunters = 2;
-hunterLatency = 720;
-hunterSpawned = 360;
+hunterLatency = 120;
+hunterSpawned = hunterLatency;
+roomWidth = 6000; //there must be a way to dynamically generate this
 
 
 activeSounds = 0;
-targSounds = 6;
+targSounds = 10;
 maxAmbientVolume = 0.4;
 
 
@@ -94,3 +95,4 @@ function playSoundAt(emitter,xCoord,yCoord,sound,lowShift,highShift)
 }
 
 
+screenWidth = view_get_wport(0);

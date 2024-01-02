@@ -14,7 +14,7 @@ if (activeHunters < max(maxHunters,nestCheck)) && (hunterSpawned > hunterLatency
 	var side = irandom_range(0,1);
 	var xtarg = -100;
 	if(side == 1){
-		xtarg = 4100;
+		xtarg = roomWidth + 100;
 	}
 	instance_create_layer(xtarg,500,"Hunters",oHunter);
 	activeHunters++;
