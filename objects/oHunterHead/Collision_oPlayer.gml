@@ -17,12 +17,19 @@ if(sinceBombed > bombedLatency && other.sprite_index == sPlayerDive && y - oPlay
 	sinceBombed = 0;
 	speak(HunterPain);
 	bubble(sBubbleWounded);
+	oPlayer.pScore += 100;
 	oPlayer.bombCount++;
 	var bombDrop = y - oPlayer.bombY;
-	if(bombDrop > 400) 
+	if(bombDrop > 300) 
 	{
+		oPlayer.pScore += int64(bombDrop/5);
 		oPlayer.longBombs++;
 		if(bombDrop>oPlayer.longestBomb) oPlayer.longestBomb = bombDrop;
+		with(instance_create_layer(0,0,"HUD",oCallout))
+		{
+			sprite_index = sDeepDive;
+			mySource = other;	
+		}
 	}
 }
 

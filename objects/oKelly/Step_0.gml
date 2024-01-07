@@ -34,6 +34,7 @@ else
 	{
 		speak(DuckCranky);
 		bubble(sBubbleGrass);
+		oPlayer.pScore -= 50;
 		waitCounter = 0;
 		patience = max(minPatience,patience - 60);
 	}

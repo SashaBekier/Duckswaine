@@ -6,7 +6,7 @@ lifeCounter++;
 
 if(sprite_index == sGrassYellow && lifeCounter % growthLatency == 0 )
 {
-	if(image_yscale < 3) image_yscale += 0.1;
+	if(image_yscale < maxSize) image_yscale += 0.1;
 	else if (mature == false)
 	{
 		mature = true;
@@ -28,16 +28,15 @@ if(sprite_index == sGrassYellow && lifeCounter % growthLatency == 0 )
 						image_xscale = 0.4;
 						image_yscale = 0.4;
 						myGrav.gravMultiplier = 1;
-						myGrav.hsp = random_range(1,3);
-						if(random(1) > 0.5) myGrav.hsp *= -1;
+						myGrav.hsp = random_range(-3,3);
 						myGrav.vsp = random_range(-4,-1);
-						deathLatency = 1200;
-						
+						deathLatency = irandom_range(900,1400);
+			//			
 					}
 					i++;
 				}
 			}
-		} 
+		}
 		else 
 		{
 			if(deathCounter < deathLatency) deathCounter++;

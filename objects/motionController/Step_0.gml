@@ -23,17 +23,18 @@ if((isFalling || activeMotion) && myBody != pointer_null)
 		{
 			y += other.vsp;
 		}
+		
 		if(place_meeting(x+other.hsp,y-other.maxUpStep+other.baseOffset,oGround)) other.hsp = 0;
-		else if(place_meeting(x+other.hsp,y,oGround))
-		{
-			while(!place_meeting(x+sign(other.hsp),y,oGround)) x += sign(other.hsp);
-			y--;
-			other.hsp *= oGround.resistX;
-		} 
-		else 
-		{
+		//else if(place_meeting(x+other.hsp,y,oGround))
+		//{
+		//	while(!place_meeting(x+sign(other.hsp),y,oGround)) x += sign(other.hsp);
+		//	y--;
+	//		other.hsp *= oGround.resistX;
+		//} 
+		//else 
+		//{
 			x += other.hsp;	
-		}
+		//}
 	}
 }
 

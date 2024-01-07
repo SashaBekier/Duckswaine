@@ -43,7 +43,7 @@ x += hsp;
 
 vsp += RoomControl.grv*4;
 
-if(place_meeting(x,y+vsp-13,oGround)){
+if(place_meeting(x,y+vsp-13,oGround) && !isDodging){
 	while(!place_meeting(x,y+sign(vsp)-13,oGround)){
 		y += sign(vsp);	
 	}
@@ -51,8 +51,7 @@ if(place_meeting(x,y+vsp-13,oGround)){
 } else {
 	//y++;	
 }
-
-y += vsp;
+if(!isDodging) y += vsp;
 
 
 if(sign(lastHsp) > 0){

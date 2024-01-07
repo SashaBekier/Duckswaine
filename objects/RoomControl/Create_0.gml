@@ -18,6 +18,8 @@ activeSounds = 0;
 targSounds = 10;
 maxAmbientVolume = 0.4;
 
+timeBonus = 2000;
+
 
 ambientSounds = [ 
 					[chirp01,60,360,.8],

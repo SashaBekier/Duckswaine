@@ -77,3 +77,6 @@ longBombs = 0;
 longestBomb = 0;
 
 bombY = 1000;
+
+
+pScore = 0;

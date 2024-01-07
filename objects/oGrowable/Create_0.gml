@@ -3,14 +3,16 @@
 
 lifeCounter = 0;
 mature = false;
-growthLatency = 6000;
+growthLatency = irandom_range(400,800);
 seedCounter = 0;
-seedLatency = 3;
+seedLatency = irandom_range(400,800);
 minSeeds = 1;
 maxSeeds = 3;
 deathCounter = 0;
-deathLatency = 2;
+deathLatency = irandom_range(50,200);
 myGrav = pointer_null;
+maxSize = random_range(2.5,3.5);
+
 with(instance_create_layer(0,0,"GameComponents",motionController))
 {
 	myBody = other;

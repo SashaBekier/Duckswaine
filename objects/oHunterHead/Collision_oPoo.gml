@@ -13,9 +13,21 @@ if(other.isFlying){
 	
 	oPlayer.headShots++;
 	oPlayer.hitStreak++;
+	oPlayer.pScore += 20;
 	
-	var pooFall = other.launchHeight - y;
-	if(pooFall > 400) oPlayer.longDrops++;
+	var pooFall = y - other.launchHeight;
+	//show_debug_message(pooFall);
+	if(pooFall > 300)
+	{
+		oPlayer.longDrops++;
+		oPlayer.pScore += int64(pooFall/10);
+		with(instance_create_layer(0,0,"HUD",oCallout))
+		{
+			mySource = other;	
+		}
+		
+	}
+	if(other.hsp > 1) oPlayer.pScore += int64(other.hsp * 5);
 	if(pooFall > oPlayer.longestDrop) oPlayer.longestDrop = pooFall;
 }
 
