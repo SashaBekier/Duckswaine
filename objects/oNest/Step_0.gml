@@ -21,7 +21,7 @@ if(isFalling){
 sinceKicked++;
 
 
-if(!kellySpawned && abs(oPlayer.x - x) > view_get_wport(0)*0.65)
+if(!kellySpawned && abs(oPlayer.x - x) > 1940)
 {
 	instance_create_layer(x,y-20,"Kelly",oKelly);
 	kellySpawned = true;

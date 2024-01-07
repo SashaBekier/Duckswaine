@@ -50,7 +50,6 @@ ambientSounds = [
 					[frog04,60,360,.8],
 					[frog05,60,360,.8],
 					[frog06,60,360,.8],
-					[frog07,60,360,.8],
 					[frog08,60,360,.8],
 					[frog09,60,360,.8],
 					[frog10,60,360,.8],
@@ -87,12 +86,10 @@ rightSound = audio_emitter_create();
 audio_emitter_position(rightSound,4001,0,0);
 
 
-
 function playSoundAt(emitter,xCoord,yCoord,sound,lowShift,highShift)
 {
 	var targDist = point_distance(xCoord,yCoord,oPlayer.x,oPlayer.y);
 	audio_play_sound_on(emitter,sound,0,100,1-(targDist/2500),targDist/1000,random_range(lowShift,highShift)+1);
 }
-
 
 screenWidth = view_get_wport(0);
