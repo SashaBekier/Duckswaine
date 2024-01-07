@@ -7,7 +7,7 @@ hsp = 0.0;
 vsp = 0.0;
 
 walkSpeed = 1.5;
-flightSpeed =8;
+flightSpeed = 8;
 flap = 5;
 maxLift = -flap;
 accLatency = 120;

@@ -24,12 +24,10 @@ if(myInputs.doPassive)
 
 if(onGround)
 {
-	if( myInputs.move == 0) hsp *= 0.9;
-	
 	isHidden = place_meeting(x,y,oConcealment);
-	
 	if(myInputs.doAttack)pecking = true;
 	if(pecking) myInputs.move = 0;
+	if( myInputs.move == 0) hsp *= 0.9;
 	
 	//if(abs(hsp)<0.2) isIdle = true;
 	if(!RoomControl.isNestSet && myInputs.doAlt)
@@ -37,8 +35,12 @@ if(onGround)
 		instance_create_layer(x,y,"Nest",oNest);
 		RoomControl.isNestSet = true;
 	}
-	hsp += myInputs.move * walkSpeed / 10;
-	if(abs(hsp) > walkSpeed) hsp = walkSpeed * sign(hsp);
+	hsp += myInputs.move * walkSpeed / 20;
+	if(abs(hsp) > walkSpeed )  hsp -= ((abs(hsp) - walkSpeed) * sign(hsp))/10;
+	if(abs(hsp) < walkSpeed && abs(myInputs.move)>0.1) hsp += (walkSpeed * sign(hsp))/20;
+	if(sign(hsp) != sign(myInputs.move)){
+		hsp += 	sign(myInputs.move)/5;
+	}
 	
 	if(!canFlap && sinceFlap > flapLatency && stamina >= baseFlapCost * 2) canFlap = true;
 	if(myInputs.tryFlap && canFlap) onGround = false;
@@ -51,19 +53,18 @@ if(!onGround)
 	var flapCost = baseFlapCost;
 	if(flapsSinceTakeOff < takeOffFlaps)
 	{
-		hsp += myInputs.move * walkSpeed / 10;
-		if(abs(hsp) > walkSpeed) hsp = walkSpeed * sign(hsp);
+		hsp += myInputs.move * walkSpeed / 20;
+		if(abs(hsp) > walkSpeed ) hsp -= (walkSpeed * sign(hsp))/10;
+		if(abs(hsp) < walkSpeed && abs(myInputs.move)>0.1) hsp += (walkSpeed * sign(hsp))/20;
 		flapCost *= 2;
 	}
 	else 
 	{
-		if(abs(hsp)>flightSpeed) hsp = flightSpeed * sign(hsp);
-		else 
-		{
-			var acc = accLatency;
-			if(sign(hsp)!=sign( myInputs.move)) acc = 20;
-			hsp +=  myInputs.move * flightSpeed / acc;
-		}
+		if(abs(hsp)>flightSpeed) hsp -= (flightSpeed * sign(hsp))/20;
+		if(abs(hsp)<flightSpeed && abs(myInputs.move)>0.1) hsp += (flightSpeed * sign(hsp))/60;
+	}
+	if(sign(hsp) != sign(myInputs.move)){
+		hsp += 	sign(myInputs.move)/2;
 	}
 	
 	isHidden = false;
@@ -85,7 +86,7 @@ if(!onGround)
 			bombY = y;
 			isDiving = true;
 		}
-		if(abs(vsp)*2 < diveTerminalVelocity) vsp += (diveTerminalVelocity-vsp)/20;
+		if(vsp < diveTerminalVelocity) vsp += (diveTerminalVelocity-vsp)/20;
 		else vsp = diveTerminalVelocity;
 	}
 	else if(isDiving)
@@ -117,8 +118,7 @@ if(!onGround)
 	
 		//turns off glide status as glide requires canflap
 		isGlide = false;
-		vsp = min(wingsTV,vsp);
-		show_debug_message("Making it to try to flap");
+		if(vsp > wingsTV) vsp -= (vsp - wingsTV) / 20;
 	}
 
 	if(canFlap && abs(hsp)>minGlideHsp && !isDiving) isGlide = true;
@@ -129,11 +129,11 @@ if(!onGround)
 	}
 	if(isGlide)
 	{
-		vsp = min(vsp,wingsTV);	
+		if (vsp>wingsTV) vsp -= (vsp - wingsTV) / 14;	
 	}
 	if(myInputs.doAlt && !isDiving)
 	{
-		vsp = min(vsp,noWingsTV);
+		if (vsp>noWingsTV) vsp -= (vsp - noWingsTV) / 20;
 		isGlide = false;
 	}
 	if(isDiving){
@@ -141,7 +141,7 @@ if(!onGround)
 	}	
 }
 
-vsp = max(maxLift,vsp);
+if(vsp < maxLift) vsp = maxLift;
 
 if(place_meeting(x,y+vsp,oGround))
 {

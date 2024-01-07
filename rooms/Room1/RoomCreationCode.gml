@@ -1,6 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-//surface_resize(application_surface, 1366, 768)
+surface_resize(application_surface, 1920, 1080);
+
 roomWidth = 6000; //there must be a way to dynamically generate this
 
 
