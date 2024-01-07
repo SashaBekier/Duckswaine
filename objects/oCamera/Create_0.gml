@@ -14,7 +14,8 @@ behindLook = .33;
 
 xTo = 0;
 
-
+bg1 = pointer_null;
+bg2 = pointer_null;
 
 
 

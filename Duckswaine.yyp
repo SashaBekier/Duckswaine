@@ -95,6 +95,7 @@
     {"id":{"name":"chirp09","path":"sounds/chirp09/chirp09.yy",},},
     {"id":{"name":"frog23","path":"sounds/frog23/frog23.yy",},},
     {"id":{"name":"oConcealment","path":"objects/oConcealment/oConcealment.yy",},},
+    {"id":{"name":"bgTreesDark","path":"sprites/bgTreesDark/bgTreesDark.yy",},},
     {"id":{"name":"oKelly","path":"objects/oKelly/oKelly.yy",},},
     {"id":{"name":"DuckCranky","path":"sounds/DuckCranky/DuckCranky.yy",},},
     {"id":{"name":"sPlayerFly","path":"sprites/sPlayerFly/sPlayerFly.yy",},},

@@ -72,6 +72,7 @@
     {"name":"chirp09","order":13,"path":"sounds/chirp09/chirp09.yy",},
     {"name":"frog23","order":4,"path":"sounds/frog23/frog23.yy",},
     {"name":"oConcealment","order":5,"path":"objects/oConcealment/oConcealment.yy",},
+    {"name":"bgTreesDark","order":8,"path":"sprites/bgTreesDark/bgTreesDark.yy",},
     {"name":"oKelly","order":3,"path":"objects/oKelly/oKelly.yy",},
     {"name":"DuckCranky","order":1,"path":"sounds/DuckCranky/DuckCranky.yy",},
     {"name":"sPlayerFly","order":3,"path":"sprites/sPlayerFly/sPlayerFly.yy",},
