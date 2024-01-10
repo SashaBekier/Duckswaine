@@ -428,8 +428,3 @@ if(carrying != pointer_null)
 	carrying.x = x + carryXShift;
 	carrying.y = y + carryYShift;
 }
-
-
-
-
-

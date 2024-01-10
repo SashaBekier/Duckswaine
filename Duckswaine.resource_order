@@ -25,12 +25,12 @@
     {"name":"Env","order":12,"path":"folders/Sprites/Env.yy",},
     {"name":"Shrubs","order":6,"path":"folders/Sprites/Env/Shrubs.yy",},
     {"name":"Trees","order":5,"path":"folders/Sprites/Env/Trees.yy",},
+    {"name":"GUI","order":14,"path":"folders/Sprites/GUI.yy",},
     {"name":"Hunter","order":13,"path":"folders/Sprites/Hunter.yy",},
     {"name":"Player","order":2,"path":"folders/Sprites/Player.yy",},
     {"name":"StamBar","order":11,"path":"folders/Sprites/Player/StamBar.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"GUI","order":14,"path":"folders/Sprites/GUI.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"frog10","order":17,"path":"sounds/frog10/frog10.yy",},

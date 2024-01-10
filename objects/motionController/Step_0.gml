@@ -35,7 +35,14 @@ if((isFalling || activeMotion) && myBody != pointer_null)
 		//{
 			x += other.hsp;	
 		//}
+		if(y > 1200)
+		{
+			instance_destroy();
+			instance_destroy(other);
+		}
 	}
+	
+	 
 }
 
 
